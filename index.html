@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h2>Estimate Planner</h2>
+            </div>
+        </div>
+    </div>
+    <form>
+        <div class="form-row">
+            <div class="form-group col d-flex">
+                <label for="exampleInputEmail1">Type of Expense</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Petrol</option>
+                    <option>Food</option>
+                    <option>Ticket</option>
+                    <option>hotel</option>
+                    <option>Drinks</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col d-flex   ">
+                <label for="expenseamt">Expense Amount</label>
+                <input type="number" class="form-control" id="expenseamt" placeholder="Amount">
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addExpense()">Submit</button>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>Summary</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <h5 class="col-8">
+                    Items
+                </h5>
+                <h5 class="col-4">
+                    Amount
+                </h5>
+            </div>
+            <div class="container" id="expenseList">
+                <!-- Expenses will be dynamically added here -->
+            </div>
+            <div class="container" id="finalamt">
+                <div class="row">
+                    <h2>Amount: </h2>
+                    <p id="value" style="margin-top: 2px;margin-left: 30px; font-size: x-large;"> </p>
+                </div>
+                <!-- Expenses will be dynamically added here -->
+            </div>
+        </div>
+        <script>
+            function addExpense() {
+                if (!addExpense.totalamount) {
+                    addExpense.totalamount = 0; 
+                }
+
+                var expenseType = document.getElementById('exampleFormControlSelect1').value;
+                var expenseAmount = parseFloat(document.getElementById('expenseamt').value);
+
+                var expenseList = document.getElementById('expenseList');
+
+                var newRow = '<div class="row">' +
+                    '<div class="col-8">' + expenseType + '</div>' +
+                    '<div class="col-4">' + expenseAmount + '</div>' +
+                    '</div>';
+
+                expenseList.innerHTML += newRow;
+
+                addExpense.totalamount += expenseAmount; // Add expenseAmount to totalamount
+
+                document.getElementById('value').innerHTML = addExpense.totalamount; // Update the total amount display
+            }
+
+        </script>
+
+    </form>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
